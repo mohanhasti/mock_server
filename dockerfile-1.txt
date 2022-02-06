@@ -1,3 +1,0 @@
-FROM node:16
-# Create app directory
-WORKDIR D:\MY WORKS\Assignments\winter term 22\Software engineering work\code\labs\server
