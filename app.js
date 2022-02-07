@@ -4,7 +4,7 @@
 const express = require('express');
 const app = express();
 //create a token from jwt.io
-const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1va2giLCJwYXNzd29yZCI6Ikpxd2VydHkiLCJpYXQiOjE1MTYyMzkwMjJ9.87r6_yvjFi5EsE7PhWIE4Mz634gv8dUEM5Q-FeouQj8"
+const key = "jwt token"
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
