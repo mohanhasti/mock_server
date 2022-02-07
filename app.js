@@ -1,27 +1,50 @@
-"use strict"
+// "use strict"
 
 // Requiring express in our server
 const express = require('express');
 const app = express();
+//create a token from jwt.io
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1va2giLCJwYXNzd29yZCI6Ikpxd2VydHkiLCJpYXQiOjE1MTYyMzkwMjJ9.87r6_yvjFi5EsE7PhWIE4Mz634gv8dUEM5Q-FeouQj8"
 
-app.use(function (req, res, next) {
-  // Website you wish to allow to connect
-  // const allowedOrigins = ['https://editor.swagger.io', 'https://hoppscotch.io'];
-  // const origin = req.headers.origin;
-  
-  // if (allowedOrigins.includes(origin)) {
-  //     res.setHeader('Access-Control-Allow-Origin', origin);
-  // }
-  
-  // Request methods you wish to allow eg: GET, POST, OPTIONS, PUT, PATCH, DELETE
-  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
-  // // Request headers you wish to allow
-  // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  // Pass to next layer of middleware
-  next();
-});
+app.post('/v1/auth', (req,res)=>{
+
+  console.log("/v1/auth request recieved")
+
+  username = req.body.username
+  password = req.body.password
+  if (username == "mokh" && password == "qwerty"){
+    token = {
+      "jwt" : key,
+      //"expires": expiry 
+   }
+   res.json(token)
+
+  }
+})
+
+// app.use(function (req, res, next) {
+//   // Website you wish to allow to connect
+//   // const allowedOrigins = ['https://editor.swagger.io', 'https://hoppscotch.io'];
+//   // const origin = req.headers.origin;
+  
+//   // if (allowedOrigins.includes(origin)) {
+//   //     res.setHeader('Access-Control-Allow-Origin', origin);
+//   // }
+  
+//   // Request methods you wish to allow eg: GET, POST, OPTIONS, PUT, PATCH, DELETE
+//   // res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+
+//   // // Request headers you wish to allow
+//   // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   // Pass to next layer of middleware
+//   next();
+// });
+
 app.get('/v1/weather', function(req, res) {
   console.log("/data/2.5/weather request recieved")
   res.json({
@@ -128,15 +151,9 @@ app.get('/v1/hello', function(req, res) {
 
   res.send('hello');
 });
-
-app.post('/v1/auth', function(req,res){
-  console.log("/v1/auth request recieved")
-
-  res.send('some token');
-});
-
   
 // Setting the server to listen at port 3000
 app.listen(3000, function(req, res) {
   console.log("Server is running at port 3000");
 });
+
