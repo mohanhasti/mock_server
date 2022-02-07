@@ -146,7 +146,7 @@ app.get('/data/2.5/weather', function(req, res) {
   });
 });
   
-app.get('/v1/hello', function(req, res) {
+app.get('/v1/greetings', function(req, res) {
   console.log("/v1/hello request recieved")
 
   res.send('hello');
