@@ -26,24 +26,6 @@ app.post('/v1/auth', (req,res)=>{
   }
 })
 
-// app.use(function (req, res, next) {
-//   // Website you wish to allow to connect
-//   // const allowedOrigins = ['https://editor.swagger.io', 'https://hoppscotch.io'];
-//   // const origin = req.headers.origin;
-  
-//   // if (allowedOrigins.includes(origin)) {
-//   //     res.setHeader('Access-Control-Allow-Origin', origin);
-//   // }
-  
-//   // Request methods you wish to allow eg: GET, POST, OPTIONS, PUT, PATCH, DELETE
-//   // res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-
-//   // // Request headers you wish to allow
-//   // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   // Pass to next layer of middleware
-//   next();
-// });
 
 app.get('/v1/weather', function(req, res) {
   console.log("/data/2.5/weather request recieved")
